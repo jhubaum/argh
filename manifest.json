@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Argh - Youtube Blocker",
+    "version": "0.01",
+
+    "content_scripts": [
+        {
+            "matches": ["*://*.youtube.com/watch*"],
+            "js": ["index.js"]
+        }
+    ],
+
+    "permissions": [
+        "activeTab"
+    ],
+
+    "web_accessible_resources": [
+        "resources/*"
+    ]
+}

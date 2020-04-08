@@ -1,0 +1,32 @@
+<!doctype HTML>
+
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link href="css/style.css"  rel="stylesheet" type="text/css">
+      <title>Argh - Youtube Blocker</title>
+    </head>
+    <body>
+      You just opened a Youtube Video! Make a note for your reason to do so.
+      <form onsubmit="submitForm(); return false;">
+          <label for="reason">Why did you visit Youtube?</label>
+          <select id="reason">
+            <option value="music">To listen to music</option>
+            <option value="hannibal">To kill some time</option>
+            <option value="procrastination">I don't want to work on my next task</option>
+            <option value="break">I want to take a break</option>
+            <option value="research">I am doing some research</option>
+            <option value="friend">Someone send me a video and I want to watch it</option>
+            <option value="save">I just want to save a video for later</option>
+          </select>
+        <textarea placeholder="Do you want to take a note of something else?">
+        </textarea>
+        <input type="submit" value="Continue">
+      </form>
+      <script>
+        function submitForm() {
+            console.log("Blakeks");
+        }
+      </script>
+    </body>
+</html>

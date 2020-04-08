@@ -1,0 +1,25 @@
+* {
+    font-family: helvetica;
+    font-size: 16px;
+}
+
+body {
+    max-width: 500px;
+    margin: auto;
+}
+
+form {
+    padding: 40px 0px;
+}
+
+form input {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    margin: 10px 0px;
+}
