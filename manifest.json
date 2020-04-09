@@ -7,7 +7,7 @@
         {
             "matches": ["*://*.youtube.com/watch*"],
             "js": ["index.js"],
-            "css": ["resources/css/style.css"]
+            "css": ["style.css"]
         }
     ],
 

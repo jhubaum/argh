@@ -1,27 +1,4 @@
-#argh-container {
-    padding: 10px;
-    left: 20px;
-    top: 20px;
-    position: fixed;
-    width: calc(100vw - 60px);
-    height: calc(100vh - 60px);
-
-    background: #ffffffdd;
-    border: 1px solid black;
-    border-radius: 5px;
-
-
+* {
     font-family: helvetica;
     font-size: 16px;
-}
-
-#argh-form {
-    width: 50%;
-    margin: auto;
-    margin-top: 20px;
-}
-
-#argh-form * {
-    width: 100%;
-    margin: 10px 0px;
 }

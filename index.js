@@ -1,11 +1,3 @@
-console.log("Test From Argh");
-
-//window.location.replace(browser.extension.getURL('resources/index.html'));
-
-function onSubmitYTReason(val) {
-    console.log('onSubmitYTReason', val)
-}
-
 function createOverlay() {
     let d = document.createElement('div');
     d.setAttribute('id', 'argh-container');
@@ -19,17 +11,48 @@ function createOverlay() {
              <option value="break">I want to take a break</option>
              <option value="research">I am doing some research</option>
              <option value="friend">Someone send me a video and I want to watch it</option>
-             <option value="save">I just want to save a video for later</option>
            </select>
            <input type="submit" value="Continue to Video">
          </form>`;
 
+    d.classList.add('form-overlay');
+
     return d;
 }
 
-document.getElementById('container').append(createOverlay());
+function openWebsite(url) {
+    window.location.replace(url);
+}
 
-document.getElementById('argh-form').addEventListener('submit', e => {
-    e.preventDefault();
-    console.log("Yay");
-});
+function closeOverlay() {
+    let overlay = document.getElementById('argh-container');
+    overlay.parentNode.removeChild(overlay);
+}
+
+function formSubmitFunction(reason) {
+    switch(reason) {
+    case "music":
+    case "friend":
+    case "research":
+    case "break":
+        return closeOverlay();
+    case "hannibal":
+        return openWebsite("https://www.youtube.com/watch?v=Ow0lr63y4Mw");
+    case "procrastination":
+        return openWebsite(browser.extension.getURL("resources/procrastination.html"));
+    }
+
+}
+
+const WHITELIST_VIDEOS = [
+    "https://www.youtube.com/watch?v=Ow0lr63y4Mw",
+];
+
+if (!WHITELIST_VIDEOS.includes(window.location.href)) {
+    document.getElementById('container').append(createOverlay());
+
+    document.getElementById('argh-form').addEventListener('submit', e => {
+        e.preventDefault();
+        formSubmitFunction(document.getElementById('argh-reason').value);
+    });
+}
