@@ -17,5 +17,11 @@
 
     "web_accessible_resources": [
         "resources/*"
-    ]
+    ],
+
+    "browser_specific_settings": {
+	    "gecko": {
+		    "id": "argh@jhuwald.com"
+	    }
+    }
 }

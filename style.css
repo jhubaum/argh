@@ -8,9 +8,31 @@
     top: 0px;
 
     font-family: helvetica;
-    font-size: 16px;
 
-    background: #ffffffed;
+    background: #ffffffbd;
+}
+
+#argh-container div {
+    background: #ffffff;
+    border: 1px solid #f2f2f2;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+button.main {
+    background: chartreuse;
+    border: 2px limegreen solid;
+    padding: 5px;
+    border-radius: .25rem;
+    margin: 3px;
+}
+
+button.main:hover {
+    background: limegreen;
+}
+
+span.bold {
+    font-weight: bold;
 }
 
 button.link {
@@ -23,4 +45,50 @@ button.link {
 
 button.link:hover {
     text-decoration: underline;
+}
+
+@media only screen and (min-width: 1025px) {
+    /* Desktop */
+    #argh-container {
+        font-size: 16px;
+    }
+    .big {
+        font-size: 21px;
+    }
+    button.main {
+        font-size: 21px;
+        margin-top: 20px;
+    }
+    p.small, p.small * {
+        font-size: 12px;
+    }
+
+    #argh-container div {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 50px;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    /* Smartphone */
+    #argh-container {
+        font-size: 21px;
+    }
+    .big {
+        font-size: 28px;
+    }
+    button.main {
+        font-size: 28px;
+        margin-top: 30px;
+    }
+    p.small, p.small * {
+        font-size: 16px;
+    }
+
+    #argh-container div {
+        margin: 80px;
+    }
+
 }
