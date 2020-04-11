@@ -71,7 +71,7 @@ function createIndexPage(parent) {
     root.appendChild(p);
 }
 
-function createIndulgementTimer(parent, length=20) {
+function createIndulgementTimer(parent, length=40) {
     parent.innerHTML =
         `<p>
          You chose to watch a video anyways. That's perfectly fine.
@@ -89,7 +89,7 @@ function createIndulgementTimer(parent, length=20) {
 
     parent.appendChild(createTimerParagraph(length));
     let nevermind = fillParagraph(document.createElement('p'), "",
-                                  "Nevermind", ", I will watch the video later.",
+                                  "Nevermind", ", I will visit Youtube later.",
                                   showSuccess);
     nevermind.getElementsByTagName('button')[0].classList.add('big');
     parent.appendChild(nevermind);
@@ -102,7 +102,7 @@ function createTimerParagraph(length) {
     window.addEventListener('blur', () => focus = false);
     window.addEventListener('focus', () => focus = true);
 
-    let updateParagraph = remaining => p.innerHTML = `Wait ${remaining} seconds to watch the video.`
+    let updateParagraph = remaining => p.innerHTML = `Wait ${remaining} seconds to continue to Youtube.`
     updateParagraph(length);
     let timer = setInterval(() => {
         if (!focus)
@@ -114,7 +114,7 @@ function createTimerParagraph(length) {
         if (length === 0) {
             clearInterval(timer);
             p.innerHTML = '';
-            p.appendChild(createActionLink("Continue to video", deleteOverlay));
+            p.appendChild(createActionLink("Continue to Youtube", deleteOverlay));
         }
     }, 1000);
 
