@@ -2,7 +2,14 @@ function createOverlayIndexElement() {
     let d = document.createElement('div');
     d.setAttribute('id', 'argh-container');
 
-    document.getElementById('container').append(d);
+    let root = document.getElementById('container');
+
+    // if root is null, website is the mobile version
+    if (root === null) {
+        document.getElementsByTagName('header')[0].append(d);
+    } else {
+        root.append(d);
+    }
 
     return d;
 }
@@ -37,7 +44,7 @@ function createIndexPage(parent) {
     parent.appendChild(root);
     root.innerHTML =
         `<p>
-           You just opened a Youtube Video, but you have installed Argh, the Youtube Blocker. This means you want to spend less time watching videos.
+           You just opened Youtube, but you have installed Argh, the Youtube Blocker. This means you want to spend less time watching videos.
          </p>
          <p>
            I'm glad that you are here and I know how hard it can be to break a bad
@@ -67,7 +74,7 @@ function createIndexPage(parent) {
 function createIndulgementTimer(parent, length=20) {
     parent.innerHTML =
         `<p>
-         You chose to watch this video anyways. That's perfectly fine.
+         You chose to watch a video anyways. That's perfectly fine.
          Maybe a friend send you a video for you to watch, or a new episode of your favourite series was released just now.
          After all, you wouldn't be here, if you didn't get any value from spending time
          on Youtube.

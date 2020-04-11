@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Argh - Youtube Blocker",
-    "version": "0.01",
+    "version": "0.1",
 
     "content_scripts": [
         {

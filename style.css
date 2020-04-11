@@ -8,6 +8,7 @@
     top: 0px;
 
     font-family: helvetica;
+    font-size: 16px;
 
     background: #ffffffbd;
 }
@@ -17,6 +18,9 @@
     border: 1px solid #f2f2f2;
     padding: 15px;
     border-radius: 4px;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 50px;
 }
 
 button.main {
@@ -25,6 +29,8 @@ button.main {
     padding: 5px;
     border-radius: .25rem;
     margin: 3px;
+    font-size: 21px;
+    margin-top: 20px;
 }
 
 button.main:hover {
@@ -47,48 +53,10 @@ button.link:hover {
     text-decoration: underline;
 }
 
-@media only screen and (min-width: 1025px) {
-    /* Desktop */
-    #argh-container {
-        font-size: 16px;
-    }
-    .big {
-        font-size: 21px;
-    }
-    button.main {
-        font-size: 21px;
-        margin-top: 20px;
-    }
-    p.small, p.small * {
-        font-size: 12px;
-    }
-
-    #argh-container div {
-        max-width: 500px;
-        margin: auto;
-        margin-top: 50px;
-    }
+.big {
+    font-size: 21px;
 }
 
-
-@media only screen and (max-width: 1024px) {
-    /* Smartphone */
-    #argh-container {
-        font-size: 21px;
-    }
-    .big {
-        font-size: 28px;
-    }
-    button.main {
-        font-size: 28px;
-        margin-top: 30px;
-    }
-    p.small, p.small * {
-        font-size: 16px;
-    }
-
-    #argh-container div {
-        margin: 80px;
-    }
-
+p.small, p.small * {
+    font-size: 12px;
 }
