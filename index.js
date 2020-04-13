@@ -75,16 +75,11 @@ function createIndulgementTimer(parent, length=40) {
     parent.innerHTML =
         `<p>
          You chose to watch a video anyways. That's perfectly fine.
-         Maybe a friend send you a video for you to watch, or a new episode of your favourite series was released just now.
-         After all, you wouldn't be here, if you didn't get any value from spending time
-         on Youtube.
-         </p><br>
-         <p>
-           But if this video is worth watching, it's also worth to wait ${length} seconds for it
-           to begin.
-           Use this time to think about, why you started the video and whether watching it
-           now is not just procrastination. <br>What would the person you want to be do
-           right now?
+         But if this video is worth watching, it's also worth to wait ${length} seconds for it
+         to begin.
+         Use this time to think about, why you started the video and whether watching it
+         now is not just procrastination. <br>What would the person you want to be do
+         right now?
          </p><br>`;
 
     parent.appendChild(createTimerParagraph(length));
