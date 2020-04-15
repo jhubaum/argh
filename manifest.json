@@ -11,9 +11,9 @@
         }
     ],
 
-    "permissions": [
-        "activeTab", "tabs", "tabHide"
-    ],
+    "icons": {
+        "64": "icon.png"
+    },
 
     "web_accessible_resources": [
         "resources/*"
