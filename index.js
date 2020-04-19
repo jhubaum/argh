@@ -116,4 +116,10 @@ function createTimerParagraph(length) {
     return p;
 }
 
-createIndexPage(createOverlayIndexElement());
+function main() {
+    createIndexPage(createOverlayIndexElement());
+}
+
+window.addEventListener('yt-navigate-finish', main);
+window.addEventListener('state-navigateend', main);
+main();
