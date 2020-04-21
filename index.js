@@ -117,7 +117,8 @@ function createTimerParagraph(length) {
 }
 
 function main() {
-    createIndexPage(createOverlayIndexElement());
+    if (window.location.pathname == '/watch')
+        createIndexPage(createOverlayIndexElement());
 }
 
 window.addEventListener('yt-navigate-finish', main);
