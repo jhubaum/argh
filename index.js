@@ -19,108 +19,76 @@ function deleteOverlay() {
     overlay.parentNode.removeChild(overlay);
 }
 
-function showSuccess() {
-    window.location.replace(browser.extension.getURL('resources/success.html'));
+function showResearchOverlay(contentNode) {
+    // clear overlay first
+    contentNode.innerHTML = `
+        <p>
+            Ok, ready your notebook? Watching a video without taking notes is no research.
+        </p><br>
+        <p>Also, what is the question you seek to answer?</p>`;
+
+    let form = document.createElement('form');
+    let input = form.appendChild(document.createElement('input'));
+    let submit = form.appendChild(document.createElement('input'));
+    submit.setAttribute('type', 'submit');
+    submit.value = 'Continue to video';
+    submit.classList.add('button');
+
+    input.addEventListener('input', e => {
+        let value = e.target.value;
+
+        function isValueValid() {
+            return value.length > 0;
+        }
+
+        if (isValueValid())
+            submit.removeAttribute('disabled');
+        else
+            submit.setAttribute('disabled', '');
+    });
+
+    submit.setAttribute('disabled', '');
+
+    contentNode.appendChild(form);
+    console.log(form);
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        deleteOverlay();
+    });
 }
 
-function createActionLink(text, action) {
-    let a = document.createElement('button');
-    a.classList.add('link');
-    a.innerHTML = text;
-    a.addEventListener('click', action);
-    return a;
-}
-
-function fillParagraph(p, textBefore, linkText, textAfter, action) {
-    p.innerHTML = textBefore;
-    p.appendChild(createActionLink(linkText, action));
-    p.append(textAfter);
-
-    return p;
+function showProcrastinationPage() {
+    window.location.replace(browser.extension.getURL('resources/message.html'));
 }
 
 function createIndexPage(parent) {
     let root = document.createElement('div')
+    root.setAttribute('id', 'argh-window');
     parent.appendChild(root);
-    root.innerHTML =
-        `<p>
-           You just opened Youtube, but you have installed Argh, the Youtube Blocker. This means you want to spend less time watching videos.
-         </p>
-         <p>
-           I'm glad that you are here and I know how hard it can be to break a bad
-           habit. So let's make it easy for you. <span class="bold">Instead of watching this one video
-           now, do ten pushups and drink a glass of water.</span>
-         </p>
-         <p>
-           If you still want to watch Youtube after that, that's perfectly fine.
-           Feel free to do so. Just do it later.
-         </p>`;
+    root.append('What is your reason to click on this video?');
 
-    let mainButton = document.createElement('button');
-    mainButton.classList.add('main');
-    mainButton.innerHTML = "Yes, I want to improve";
-    mainButton.addEventListener('click', showSuccess);
+    function createButton(content, action) {
+        let button = document.createElement('button');
+        button.innerHTML = content;
+        button.addEventListener('click', action);
+        return button;
+    }
 
-    root.appendChild(mainButton);
+    let buttonContainer = root.appendChild(document.createElement('div'));
+    buttonContainer.classList.add('button-container');
 
-    let p = document.createElement('p');
-    p.classList.add('small');
-    fillParagraph(p, 'This time, I will ', 'indulge anyways', '.',
-                  () => createIndulgementTimer(root));
-
-    root.appendChild(p);
+    buttonContainer.appendChild(createButton("I want to listen to music", deleteOverlay));
+    buttonContainer.appendChild(createButton("A friend send me this video", deleteOverlay));
+    buttonContainer.appendChild(createButton("I want to do some research", () => showResearchOverlay(root)));
+    buttonContainer.appendChild(createButton("None of the above", showProcrastinationPage));
 }
 
-function createIndulgementTimer(parent, length=40) {
-    parent.innerHTML =
-        `<p>
-         You chose to watch a video anyways. That's perfectly fine.
-         But if this video is worth watching, it's also worth to wait ${length} seconds for it
-         to begin.
-         Use this time to think about, why you started the video and whether watching it
-         now is not just procrastination. <br>What would the person you want to be do
-         right now?
-         </p><br>`;
 
-    parent.appendChild(createTimerParagraph(length));
-    let nevermind = fillParagraph(document.createElement('p'), "",
-                                  "Nevermind", ", I will visit Youtube later.",
-                                  showSuccess);
-    nevermind.getElementsByTagName('button')[0].classList.add('big');
-    parent.appendChild(nevermind);
-}
-
-function createTimerParagraph(length) {
-    let p = document.createElement('p');
-
-    let focus = true;
-    window.addEventListener('blur', () => focus = false);
-    window.addEventListener('focus', () => focus = true);
-
-    let updateParagraph = remaining => p.innerHTML = `Wait ${remaining} seconds to continue to Youtube.`
-    updateParagraph(length);
-    let timer = setInterval(() => {
-        if (!focus)
-            return;
-       
-        length -= 1;
-        updateParagraph(length);
-
-        if (length === 0) {
-            clearInterval(timer);
-            p.innerHTML = '';
-            p.appendChild(createActionLink("Continue to Youtube", deleteOverlay));
-        }
-    }, 1000);
-
-    return p;
-}
-
-function main() {
-    if (window.location.pathname == '/watch')
+function checkOverlayTrigger() {
+    if (window.location.pathname == '/watch' && document.getElementById('argh-container') === null)
         createIndexPage(createOverlayIndexElement());
 }
 
-window.addEventListener('yt-navigate-finish', main);
-window.addEventListener('state-navigateend', main);
-main();
+window.addEventListener('yt-navigate-finish', checkOverlayTrigger);
+window.addEventListener('state-navigateend', checkOverlayTrigger);
+checkOverlayTrigger();

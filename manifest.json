@@ -7,7 +7,7 @@
         {
             "matches": ["*://*.youtube.com/*"],
             "js": ["index.js"],
-            "css": ["style.css"]
+            "css": ["resources/css/style.css"]
         }
     ],
 
@@ -15,13 +15,19 @@
         "64": "icon.png"
     },
 
+    "options_ui": {
+        "page": "options.html"
+    },
+
+    "permissions": ["storage"],
+
     "web_accessible_resources": [
         "resources/*"
     ],
 
     "browser_specific_settings": {
-	    "gecko": {
-		    "id": "argh@jhuwald.com"
-	    }
+        "gecko": {
+            "id": "argh@jhuwald.com"
+        }
     }
 }

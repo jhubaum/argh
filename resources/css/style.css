@@ -1,11 +1,55 @@
-* {
+#argh-container {
+    padding: 20px;
+    position: fixed;
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+
+    left: 0px;
+    top: 0px;
+
     font-family: helvetica;
     font-size: 16px;
+
+    background: #ffffffbd;
 }
 
-div {
+#argh-window {
+    background: #ffffff;
+    border: 1px solid #f2f2f2;
     padding: 15px;
+    border-radius: 4px;
     max-width: 500px;
     margin: auto;
     margin-top: 50px;
+    min-height: 300px;
+    vertical-align: middle;
+}
+
+div.button-container, #argh-window form {
+    text-align: center;
+}
+
+#argh-window form input {
+    width: 80%;
+    margin-top: 20px;
+}
+
+div.button-container button, .button {
+    background: #dc004e;
+    color: #f2f2f2;
+    border: none;
+    padding: 5px;
+    border-radius: .5rem;
+    margin: 5px;
+    font-size: 21px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+div.button-container button:hover , .button:hover {
+    background: #a8003a;
+}
+
+div.button-container button:disabled , .button:disabled {
+    background: #db99b0;
 }
