@@ -6,6 +6,8 @@ In a previous version, I added a timer before every video to make me conscious o
 
 The current version adds a dialogue with the different use cases I identified how I use YouTube and requires different actions for each one.
 
+[Click here](https://jhuwald.com/2020/04/21/argh/) for a detailed blog post of the different versions
+
 Right now, the plugin supports Firefox and Firefox for Android
 
 # License
