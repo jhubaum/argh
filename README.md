@@ -1,5 +1,12 @@
-This plugin is perfect for you, if you procrastinate using Youtube and want to spend less time watching videos. It adds a simple reminder before every video that reminds you of this very fact. If you still want to watch the video, e.g. because it's a music video you listen to while reading, you have to wait for 40s before you can watch it.
+# What is this repo about?
+I want to watch less time watching youtube, but all the website blockers that I used didn't help me to break the habit longterm.
+This plugin is my attempt to do just that.
+
+In a previous version, I added a timer before every video to make me conscious of the Youtube spiral I was in. This shortened its time, but I still watched more videos than intended.
+
+The current version adds a dialogue with the different use cases I identified how I use YouTube and requires different actions for each one.
 
 Right now, the plugin supports Firefox and Firefox for Android
 
+# License
 This project is licensed under the terms of the MIT license.
